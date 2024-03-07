@@ -1,3 +1,10 @@
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from './components/Router';
+
 export default function App() {
-  return <h1>FacilitaJurídico</h1>;
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
