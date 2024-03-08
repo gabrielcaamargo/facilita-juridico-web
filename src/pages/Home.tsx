@@ -1,3 +1,11 @@
+import { Customers } from '../components/Customers';
+
 export function Home() {
-  return <h1>Home</h1>;
+  return (
+    <div className='mt-8 mx-auto max-w-[90vw] md:max-w-[1200px]'>
+      <Customers.Root>
+        <Customers.Header />
+      </Customers.Root>
+    </div>
+  );
 }
