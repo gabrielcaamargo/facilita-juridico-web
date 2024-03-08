@@ -1,22 +1,20 @@
 import { TrashSimple } from 'phosphor-react';
+import { ICustomer } from '../../@types/ICustomer';
 
 interface ICustomerProps {
-  id: string
-  name: string,
-  email: string
-  position: string
+  customer: ICustomer
 }
 
-export function Customer({ name, email, position }: ICustomerProps) {
+export function Customer({ customer }: ICustomerProps) {
   return (
     <div className="bg-gray-200 p-2 rounded flex items-center justify-between">
       <div>
         <div>
-          <strong>{name}</strong>
+          <strong>{customer.name}</strong>
         </div>
         <div className="flex flex-col">
-          <span className="text-sm text-gray-500">{email}</span>
-          <span className="text-sm text-gray-500">Posição: {position}</span>
+          <span className="text-sm text-gray-500">{customer.email}</span>
+          <span className="text-sm text-gray-500">Posição: ({customer.position_x}, {customer.position_y})</span>
         </div>
       </div>
       <div>

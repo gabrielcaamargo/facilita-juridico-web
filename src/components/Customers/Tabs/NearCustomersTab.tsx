@@ -19,13 +19,10 @@ export function NearCustomersTab() {
 
   return (
     <div className='flex flex-col gap-4'>
-      {sortedCustomers.map((customer, index) => (
+      {sortedCustomers.map((customer) => (
         <Customers.Customer
-          key={index}
-          id={customer.id}
-          name={customer.name}
-          email={customer.email}
-          position={`(${customer.position_x}, ${customer.position_y})`}
+          key={customer.id}
+          customer={customer}
         />
       ))}
     </div>
