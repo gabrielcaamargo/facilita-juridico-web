@@ -14,7 +14,7 @@ export function TabsRoot() {
       {
         currentTab === 'customers'
           ? <CustomersTabs.AllCustomers />
-          : <h1>Distance</h1>
+          : <CustomersTabs.NearCustomers />
       }
     </div>
   );

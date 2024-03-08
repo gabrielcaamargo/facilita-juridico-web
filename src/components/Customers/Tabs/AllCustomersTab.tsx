@@ -12,7 +12,7 @@ export function AllCustomersTab() {
           id={customer.id}
           name={customer.name}
           email={customer.email}
-          position={`(${customer.position})`}
+          position={`(${customer.position_x}, ${customer.position_y})`}
         />
       ))}
     </div>
