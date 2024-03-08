@@ -1,6 +1,9 @@
 import { CustomersTabs } from '.';
+import { useCurrentCustomerTabContext } from '../../../contexts/CurrentCustomerTabContext';
 
 export function TabsRoot() {
+  const { currentTab } = useCurrentCustomerTabContext();
+
   return (
     <div className="w-full flex-items-center gap-4">
       <div className='flex items-center gap-2 mb-8'>
@@ -8,7 +11,11 @@ export function TabsRoot() {
         <CustomersTabs.Tab title='Clientes mais próximos' tabId='distance' />
       </div>
 
-      <CustomersTabs.AllCustomers />
+      {
+        currentTab === 'customers'
+          ? <CustomersTabs.AllCustomers />
+          : <h1>Distance</h1>
+      }
     </div>
   );
 }
