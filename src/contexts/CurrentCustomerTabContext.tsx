@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-type CurrentTab = 'customers' | 'distance'
+export type CurrentTab = 'customers' | 'distance'
 
 interface ICurrentCustomerTabContext {
   currentTab: CurrentTab
@@ -14,7 +14,7 @@ interface ICurrentCustomerTabContextProviderProps {
 const CurrentCustomerTabContext = createContext({} as ICurrentCustomerTabContext);
 
 function CurrentCustomerTabContextProvider({ children }: ICurrentCustomerTabContextProviderProps) {
-  const [currentTab, setCurrentTab] = useState<CurrentTab>('' as CurrentTab);
+  const [currentTab, setCurrentTab] = useState<CurrentTab>('customers');
 
   return (
     <CurrentCustomerTabContext.Provider value={{ currentTab, setCurrentTab }}>

@@ -5,9 +5,7 @@ interface ICustomersRootProps {
 export function CustomersRoot({ children }: ICustomersRootProps) {
   return (
     <div>
-      <div className="flex items-center justify-between w-full">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
