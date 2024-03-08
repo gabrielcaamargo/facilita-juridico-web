@@ -1,7 +1,7 @@
 import { HttpClient } from '../utils/HttpClient';
 
 export class CustomerService {
-  httpClient = new HttpClient('http://localhost:3000');
+  private httpClient = new HttpClient('http://localhost:3000/api/v1');
 
   async getAllCustomers() {
     try {
