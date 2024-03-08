@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { ICustomer } from '../@types/ICustomer';
 
 interface ICustomerContext {
@@ -22,4 +22,6 @@ function CustomerContextProvider({ children }: ICustomerContextProps) {
   );
 }
 
-export { CustomerContextProvider };
+const useCustomerContext = () => useContext(CustomerContext);
+
+export { CustomerContextProvider, useCustomerContext };
