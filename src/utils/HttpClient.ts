@@ -12,5 +12,4 @@ class HttpClient {
   }
 }
 
-
 export { HttpClient };
