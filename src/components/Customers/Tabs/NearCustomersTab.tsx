@@ -6,15 +6,15 @@ export function NearCustomersTab() {
 
   const sortedCustomers = [...customers];
 
-  function calcularDistancia(x1: number, y1: number, x2: number, y2: number) {
+  function calculateDistance(x1: number, y1: number, x2: number, y2: number) {
     return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
   }
 
   sortedCustomers.sort((customerA, customerB) => {
-    const distanciaA = calcularDistancia(0, 0, customerA.position_x, customerA.position_y);
-    const distanciaB = calcularDistancia(0, 0, customerB.position_x, customerB.position_y);
+    const distanceA = calculateDistance(0, 0, customerA.position_x, customerA.position_y);
+    const distanceB = calculateDistance(0, 0, customerB.position_x, customerB.position_y);
 
-    return distanciaA - distanciaB;
+    return distanceA - distanceB;
   });
 
   return (

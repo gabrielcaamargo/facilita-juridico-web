@@ -1,9 +1,10 @@
 import { createContext, useContext, useState } from 'react';
 
 interface IModalContext {
-  open: boolean
-  setOpen: (setState: boolean) => void
-  toggleOpen: () => void
+  openDelete: boolean
+  toggleOpenDelete: () => void
+  openCreate: boolean
+  toggleOpenCreate: () => void
 }
 
 interface IModalContextProps {
@@ -13,14 +14,19 @@ interface IModalContextProps {
 const ModalContext = createContext({} as IModalContext);
 
 function ModalContextProvider({ children }: IModalContextProps) {
-  const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openCreate, setOpenCreate] = useState(false);
 
-  function toggleOpen() {
-    setOpen(prev => !prev);
+  function toggleOpenDelete() {
+    setOpenDelete(prev => !prev);
+  }
+
+  function toggleOpenCreate() {
+    setOpenCreate(prev => !prev);
   }
 
   return (
-    <ModalContext.Provider value={{ open, setOpen, toggleOpen }}>
+    <ModalContext.Provider value={{ openDelete, toggleOpenDelete, openCreate, toggleOpenCreate }}>
       {children}
     </ModalContext.Provider>
   );

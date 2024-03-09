@@ -9,14 +9,14 @@ interface ICustomerProps {
 }
 
 export function Customer({ customer }: ICustomerProps) {
-  const { open, toggleOpen } = useModalContext();
+  const { openDelete, toggleOpenDelete } = useModalContext();
   const customerService = new CustomerService();
 
   async function handleDeleteCustomer() {
     await customerService.deleteCustomer(customer.id)
       .then(() => {
         alert(`${customer.name} deletado com sucesso!`);
-        toggleOpen();
+        toggleOpenDelete();
         location.reload();
       })
       .catch(err => alert(err));
@@ -35,17 +35,18 @@ export function Customer({ customer }: ICustomerProps) {
       </div>
       <div>
         <button title='Deletar Gabriel Camargo' className='ease-in duration-75 hover:opacity-50'>
-          <TrashSimple size={24} color='#FF0808' onClick={toggleOpen} />
+          <TrashSimple size={24} color='#FF0808' onClick={toggleOpenDelete} />
         </button>
       </div>
 
-      {open && (
+      {openDelete && (
         <Modal.Root
           title={`Deletar ${customer.name}`}
           cancelButton
           confirmButtonVariant='danger'
           confirmButtonTitle='Deletar'
           onConfirm={handleDeleteCustomer}
+          onCancel={toggleOpenDelete}
         />
       )}
     </div>
