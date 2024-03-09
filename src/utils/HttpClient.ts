@@ -10,6 +10,14 @@ class HttpClient {
 
     return response.json();
   }
+
+  async delete(path: string) {
+    const response = await fetch(`${this.baseURL}${path}`, {
+      method: 'DELETE'
+    });
+
+    return response.json();
+  }
 }
 
 export { HttpClient };

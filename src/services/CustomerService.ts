@@ -12,4 +12,13 @@ export class CustomerService {
       return error;
     }
   }
+
+  async deleteCustomer(id: string) {
+    try {
+      return this.httpClient.delete(`/customers/${id}`);
+
+    } catch (error) {
+      return error;
+    }
+  }
 }

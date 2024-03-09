@@ -1,11 +1,27 @@
 import { TrashSimple } from 'phosphor-react';
 import { ICustomer } from '../../@types/ICustomer';
+import { useModalContext } from '../../contexts/ModalContext';
+import { Modal } from '../Modal';
+import { CustomerService } from '../../services/CustomerService';
 
 interface ICustomerProps {
   customer: ICustomer
 }
 
 export function Customer({ customer }: ICustomerProps) {
+  const { open, toggleOpen } = useModalContext();
+  const customerService = new CustomerService();
+
+  async function handleDeleteCustomer() {
+    await customerService.deleteCustomer(customer.id)
+      .then(() => {
+        alert(`${customer.name} deletado com sucesso!`);
+        toggleOpen();
+        location.reload();
+      })
+      .catch(err => alert(err));
+  }
+
   return (
     <div className="bg-gray-200 p-2 rounded flex items-center justify-between">
       <div>
@@ -19,9 +35,19 @@ export function Customer({ customer }: ICustomerProps) {
       </div>
       <div>
         <button title='Deletar Gabriel Camargo' className='ease-in duration-75 hover:opacity-50'>
-          <TrashSimple size={24} color='#FF0808'/>
+          <TrashSimple size={24} color='#FF0808' onClick={toggleOpen} />
         </button>
       </div>
+
+      {open && (
+        <Modal.Root
+          title={`Deletar ${customer.name}`}
+          cancelButton
+          confirmButtonVariant='danger'
+          confirmButtonTitle='Deletar'
+          onConfirm={handleDeleteCustomer}
+        />
+      )}
     </div>
   );
 }

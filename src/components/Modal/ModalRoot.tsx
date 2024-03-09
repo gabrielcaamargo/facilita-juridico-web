@@ -1,5 +1,6 @@
 import { createPortal }  from 'react-dom';
 import { Modal } from '.';
+import { useModalContext } from '../../contexts/ModalContext';
 
 export type ConfirmButtonVariants = 'default' | 'empty' | 'danger'
 
@@ -13,6 +14,7 @@ interface IModalRootProps {
 }
 
 export function ModalRoot({ title, children, cancelButton, confirmButtonVariant = 'default', confirmButtonTitle = 'Confirmar', onConfirm }: IModalRootProps) {
+  const { toggleOpen } = useModalContext();
   const portalRoot = document.getElementById('modal-root') as HTMLElement;
 
   return createPortal(
@@ -25,7 +27,7 @@ export function ModalRoot({ title, children, cancelButton, confirmButtonVariant 
         {children}
 
         <footer className='flex justify-end items-center gap-4 mt-2'>
-          {cancelButton && <Modal.Button variant='empty' title='Cancelar' />}
+          {cancelButton && <Modal.Button variant='empty' title='Cancelar' onClick={toggleOpen}/>}
           <Modal.Button
             title={confirmButtonTitle}
             variant={confirmButtonVariant}
