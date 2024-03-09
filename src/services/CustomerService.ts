@@ -13,6 +13,16 @@ export class CustomerService {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async createCustomer(body: any) {
+    try {
+      return this.httpClient.create('/customers', body);
+
+    } catch (error) {
+      return error;
+    }
+  }
+
   async deleteCustomer(id: string) {
     try {
       return this.httpClient.delete(`/customers/${id}`);
