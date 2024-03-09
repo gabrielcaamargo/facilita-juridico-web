@@ -1,31 +1,51 @@
-# React + TypeScript + Vite
+# facilita-juridico-web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Teste para a vaga de desenvolvedor full stack na empresa Facilita Jurídico (frontend).
 
-Currently, two official plugins are available:
+Este projeto roda juntamente à [API](https://github.com/gabrielcaamargo/facilita-juridico-api)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Estrutura
 
-## Expanding the ESLint configuration
+O projeto está organizado da seguinte maneira: 
+  - src: Contém todos os arquivos do projeto. É o _core_ do projeto.
+    - @types - Contém as tipagens globais da aplicação
+    - components - Componentes globais
+    - contexts - Contém as contexts do projeto, usadas para manipulação de estados globais
+    - pages - Páginas da aplicação
+    - services - Services para integração com a API. Service layer usada para desacoplar as chamadas à API, a fim de centralizar e manter responsabilidades únicas dentro do meu app.
+    - utils - Funções utilitárias e também contém um cliente http nativo criado com Javascript puro.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Como executar este projeto
 
-- Configure the top-level `parserOptions` property like this:
+Para executar o projeto você vai precisar das seguintes ferramentas previamente instaladas:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. [NodeJS](https://nodejs.org/en)
+2. Npm (vem instalado junto ao NodeJS)
+3. Yarn
+   1. Para instalar você deve seguir os seguintes passos:
+      1. Abra o seu terminal
+      2. ```bash
+         $ npm i --g yarn
+         ```
+
+#### Clone o projeto
+
+1. ```bash
+   $ git clone https://github.com/gabrielcaamargo/facilita-juridico-web.git
+   $ cd facilita-juridico-api
+   ```
+
+#### Execute o projeto
+
+```bash
+# Ambiente de desenvolvimento
+$ yarn
+$ yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# facilita-juridico-web
+Com estes comandos executados, o projeto estará rodando em http://localhost:3000/api/v1
+
+Observação final: Neste projeto, evitei ao máximo o uso de bibliotecas externas, sendo as únicas que utilizei:
+  1. React 
+  2. Tailiwind
+  3. Phosphor icons 
